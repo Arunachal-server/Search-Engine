@@ -13,4 +13,4 @@ async def root():
 
 
 if "__main__" == __name__:
-    uvicorn.run("app:app", debug=True, reload=True)
+    uvicorn.run("app:app")
