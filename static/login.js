@@ -19,7 +19,7 @@ var login = function () {
                 window.location.href = "/search";
             }
             else{
-                alert(response.message);
+                alert("Invalid Credentials");
             }
         }
     }
