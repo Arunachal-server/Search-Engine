@@ -31,3 +31,14 @@ async def login(request: Request):
     credentials = await request.json()
     message = functions.authenticate(credentials)
     return message
+
+@app.post("/parameters")
+async def parameters(request: Request):
+    credentials = await request.json()
+    message = functions.writeparameters(credentials)
+    return message
+
+@app.post("/new-user")
+async def new_user(username: str, password: str):
+    message = functions.new_user(username, password)
+    return message
