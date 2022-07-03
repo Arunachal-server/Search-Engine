@@ -1,11 +1,20 @@
 import json
 import os
+from pymongo import MongoClient
+import mongofunctions
 
 def authenticate(request):
-    if(request["login"] == "admin" and request["password"] == "manojadmin"):
-        return {"message": "success"}
+    USERNAME=request["login"]
+    PASSWORD=request["password"]
+    user_exists=mongofunctions.find_in_mongo({"username": USERNAME}, "users", "users")
+    if user_exists.count() == 0:
+        return {"status": "User not found"}
     else:
-        return {"message": "failure"}
+        user=user_exists[0]
+        if user["password"] == PASSWORD:
+            return {"status": "Success"}
+        else:
+            return {"status": "Password Incorrect"}
 
 def writeparameters(request):
     FILE_NAME="parameters.json"

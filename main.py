@@ -1,4 +1,5 @@
 import functions
+import mongofunctions
 from fastapi import FastAPI
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
@@ -40,5 +41,5 @@ async def parameters(request: Request):
 
 @app.post("/new-user")
 async def new_user(username: str, password: str):
-    message = functions.new_user(username, password)
+    message = mongofunctions.login(username, password)
     return message

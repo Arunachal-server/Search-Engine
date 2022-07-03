@@ -15,11 +15,11 @@ var login = function () {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const response = JSON.parse(xhr.responseText);
-            if (response.message == "success") {
+            if (response.status == "Success") {
                 window.location.href = "/search";
             }
             else{
-                alert("Invalid Credentials");
+                alert(response.status);
             }
         }
     }
